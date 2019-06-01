@@ -4,9 +4,9 @@ WORKDIR /app
 COPY ./ /app
 
 # Compile our CSS and JavaScript assets
-RUN [ -e package.json ] && npm install
-RUN [ -e bower.json ] && ./node_modules/.bin/bower --allow-root install
-RUN [ -e Gruntfile.js ] && ./node_modules/.bin/grunt
+RUN [ -e package.json ] && npm install || true
+RUN [ -e bower.json ] && ./node_modules/.bin/bower --allow-root install || true
+RUN [ -e Gruntfile.js ] && ./node_modules/.bin/grunt || true
 
 # Clean up
 RUN rm -rf \
